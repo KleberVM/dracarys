@@ -1,0 +1,15 @@
+*.sqlite3
+__pycache__.*
+*.pyc
+*.log
+__pycache__/
+# Ignorar archivos de migraciones
+*/migrations/00*
+*/migrations/*.pyc
+# Ignorar archivos de entorno virtual
+venv/
+env/
+.venv/
+.env/
+.env*
+# Ignorar archivos de configuración local

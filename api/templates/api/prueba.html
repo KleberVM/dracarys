@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body class="bg-dark text-light">
+    <div class="container py-5">
+        <h1 class="mb-4 text-danger border-bottom border-danger pb-2">{{ titulo }}</h1>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card bg-secondary h-100">
+                    <div class="card-body">
+                        <h3>Prueba 1: Búsqueda por Parámetro (GET)</h3>
+                        <p class="small text-warning">Endpoint: <code>/usuarios/buscar/param/?sis=...</code></p>
+                        <input type="text" id="sis_get" class="form-control mb-2" placeholder="Ingresa SIS (ej: 202103154)">
+                        <button onclick="probarGET()" class="btn btn-primary w-100">Ejecutar GET</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card bg-secondary h-100">
+                    <div class="card-body">
+                        <h3>Prueba 2: Búsqueda por JSON (POST)</h3>
+                        <p class="small text-warning">Endpoint: <code>/usuarios/buscar/json/</code></p>
+                        <input type="text" id="sis_post" class="form-control mb-2" placeholder="Ingresa SIS (ej: 202103154)">
+                        <button onclick="probarPOST()" class="btn btn-danger w-100">Ejecutar POST</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h4>Respuesta del Servidor:</h4>
+            <pre id="resultado">Esperando ejecución...</pre>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = "{{ api_key }}";
+        const resDisplay = document.getElementById('resultado');
+
+        // Lógica para la vista obtener_usuario_por_parametro
+        async function probarGET() {
+            const sis = document.getElementById('sis_get').value;
+            const url = `/usuarios/buscar/param/?sis=${sis}`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: { 'X-API-KEY': API_KEY }
+                });
+                const data = await response.json();
+                resDisplay.innerText = JSON.stringify(data, null, 4);
+            } catch (err) {
+                resDisplay.innerText = "Error en la petición GET: " + err;
+            }
+        }
+
+        // Lógica para la vista obtener_usuario_por_json
+        async function probarPOST() {
+            const sis = document.getElementById('sis_post').value;
+            const url = `/usuarios/buscar/json/`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 
+                        'X-API-KEY': API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ "sis": sis })
+                });
+                const data = await response.json();
+                resDisplay.innerText = JSON.stringify(data, null, 4);
+            } catch (err) {
+                resDisplay.innerText = "Error en la petición POST: " + err;
+            }
+        }
+    </script>
+</body>
+</html>
