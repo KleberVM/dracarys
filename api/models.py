@@ -91,3 +91,22 @@ class InscripcionDeseada(models.Model):
         db_table = 'Inscripcion_deseada'
         verbose_name = 'Inscripción Deseada'
         verbose_name_plural = 'Inscripciones Deseadas'
+
+
+class Tokens(models.Model):
+    # llave primaria manual (No autoincremental)
+    token = models.CharField(primary_key=True, max_length=255, db_column='token')
+    
+    usos = models.SmallIntegerField(db_default=3, default=3)
+
+    enabled = models.BooleanField(db_default=True, default=True)
+
+    created_at = models.DateTimeField(db_default=Now(), auto_now_add=True)
+
+    class Meta:
+        db_table = 'Tokens'
+        verbose_name = 'Token'
+        verbose_name_plural = 'Tokens'
+
+    def __str__(self):
+        return f"Token: {self.token} (Usos restantes: {self.usos})"
