@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dracarys - UMSS 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="main-container">
+        <header>
+            <div class="logo-container">
+                <h1 class="glow-text">DRACARYS</h1>
+                <div class="underline"></div>
+            </div>
+            <p class="subtitle">Servidor inteligente</p>
+        </header>
+        
+        <main>
+            <section class="status-section">
+                <div class="status-card">
+                    <div class="card-header">
+                        <span class="pulse-icon"></span>
+                        <h3>Estado del Sistema</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="status-text">Módulos en línea</p>
+                        <div class="indicator-container">
+                            <span class="status-label">API Gateway:</span>
+                            <div class="indicator green"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Dracarys Engine</p>
+        </footer>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

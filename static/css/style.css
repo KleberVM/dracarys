@@ -1,0 +1,111 @@
+:root {
+    --primary-red: #d90429;
+    --dark-red: #660708;
+    --bg-black: #0b090a;
+    --glass-bg: rgba(22, 26, 29, 0.8);
+    --text-main: #f5f3f4;
+}
+
+body {
+    background-color: var(--bg-black);
+    background-image: radial-gradient(circle at center, #1a1a1a 0%, #0b090a 100%);
+    color: var(--text-main);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    z-index: 2;
+    position: relative;
+}
+
+/* Tipografía y Efectos */
+.glow-text {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-red);
+    font-size: 4rem;
+    margin: 0;
+    letter-spacing: 8px;
+    text-shadow: 0 0 20px rgba(217, 4, 41, 0.6);
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #b1a7a6;
+    margin-top: 10px;
+}
+
+.underline {
+    width: 100px;
+    height: 4px;
+    background: var(--primary-red);
+    margin: 10px auto;
+    box-shadow: 0 0 10px var(--primary-red);
+}
+
+/* Tarjeta de Estado con Glassmorphism */
+.status-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217, 4, 41, 0.2);
+    padding: 2.5rem;
+    border-radius: 20px;
+    margin-top: 40px;
+    width: 320px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-red);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--primary-red);
+}
+
+/* Indicadores */
+.indicator-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.green {
+    background-color: #2CC985;
+    box-shadow: 0 0 15px #2CC985;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 30px;
+    font-size: 0.8rem;
+    color: #666;
+}
